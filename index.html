@@ -1,4 +1,320 @@
 <!DOCTYPE html>
 <html lang="fr">
-	soon...
+<head>
+  <meta charset="UTF-8" />
+  <title>MeshCore France – Réseau LoRa Mesh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Communauté MeshCore France – Réseau LoRa maillé longue portée, réglages EU/UK Narrow, documentation d'installation et liens Discord France." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="logo-title">
+        <div class="logo-circle">
+          <span class="logo-dot"></span>
+        </div>
+        <div>
+          <h1>MeshCore France</h1>
+          <p class="tagline">Réseau LoRa maillé, longue portée, hors‑ligne.</p>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="hero-intro">
+            Construisez un réseau maillé LoRa robuste pour rester connecté en randonnée, en montagne,
+            en festival ou en situation de crise – sans carte SIM ni Internet.
+          </p>
+          <ul class="hero-list">
+            <li>🔒 Messages chiffrés et réseau décentralisé.</li>
+            <li>📡 Routage multi‑sauts pour couvrir de grandes distances.</li>
+            <li>🔋 Faible consommation, idéal sur batterie ou solaire.</li>
+          </ul>
+
+          <div class="hero-actions">
+            <a href="#install" class="btn primary">Installer MeshCore France</a>
+            <a href="#settings" class="btn ghost">Voir les réglages LoRa</a>
+          </div>
+
+          <div class="hero-note">
+            <span class="dot-online"></span>
+            <span>Réseau communautaire en pleine expansion sur tout le territoire.</span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="card settings-card" id="settings">
+            <h2>Réglages officiels MeshCore France</h2>
+            <p class="settings-main">
+              869.618 MHz • BW = 62.5 kHz • SF = 8 • CR = 8
+            </p>
+            <p class="settings-sub">
+              Profil recommandé pour la France : portée élevée, bonne robustesse, compatible EU/UK Narrow.
+            </p>
+            <ul class="settings-list">
+              <li>Région : EU/UK (EU868)</li>
+              <li>Mode : Narrow • usage texte et data légère</li>
+              <li>Puissance : conforme limite EIRP européenne</li>
+            </ul>
+          </div>
+
+          <div class="card map-card">
+            <h3>Illustration de maillage</h3>
+            <div class="mesh-map">
+              <div class="node node-main">FR‑Hub</div>
+              <div class="node node-sub n1">Alpes</div>
+              <div class="node node-sub n2">Paris</div>
+              <div class="node node-sub n3">Atlantique</div>
+              <div class="link l1"></div>
+              <div class="link l2"></div>
+              <div class="link l3"></div>
+            </div>
+            <p class="mesh-caption">
+              Chaque nœud relaie les messages : plus vous en ajoutez, plus le maillage couvre loin.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Bloc communauté / liens -->
+    <section class="section community">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Communauté MeshCore France</h2>
+          <p>Échanger, apprendre, cartographier les nœuds et aider les nouveaux venus.</p>
+        </div>
+
+        <div class="links-grid">
+          <a class="link-card" href="https://discord.com/channels/1343693475589263471/1427697060492087429" target="_blank" rel="noopener">
+            <h3>🇫🇷 Discord France</h3>
+            <p>Salon francophone dédié à MeshCore : entraide, retours terrain, projets locaux.</p>
+            <span class="link-pill">Rejoindre le salon France →</span>
+          </a>
+
+          <a class="link-card" href="https://meshcore.co.uk/" target="_blank" rel="noopener">
+            <h3>🌐 Webflasher & App</h3>
+            <p>Flashez vos cartes, configurez vos nœuds et découvrez les firmwares MeshCore.</p>
+            <span class="link-pill">Ouvrir la page officielle →</span>
+          </a>
+
+          <a class="link-card" href="https://meshcore.co.uk/map.html" target="_blank" rel="noopener">
+            <h3>🗺️ Carte mondiale</h3>
+            <p>Explorez les nœuds MeshCore dans le monde et partagez vos propres installations.</p>
+            <span class="link-pill">Voir la carte →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section doc installation -->
+    <section class="section install" id="install">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Installation MeshCore – Guide rapide (FR)</h2>
+          <p>Quelques minutes suffisent pour déployer vos premiers nœuds en France.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number">1</span>
+            <h3>Matériel requis</h3>
+            <ul>
+              <li>1 à n cartes LoRa compatibles MeshCore (ex. modules LoRa avec MCU intégré).</li>
+              <li>Un câble USB pour le flash.</li>
+              <li>Un smartphone Android ou iOS avec l’application MeshCore.</li>
+            </ul>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">2</span>
+            <h3>Flasher le firmware</h3>
+            <ol>
+              <li>Placez la carte en mode bootloader (selon la carte : bouton au branchement, double‑reset, etc.).</li>
+              <li>Ouvrez le Webflasher MeshCore (lien « Webflasher &amp; App ») dans votre navigateur.</li>
+              <li>Sélectionnez votre modèle de carte et le firmware adapté : Companion pour commencer.</li>
+              <li>Lancez le flash, attendez la fin, puis débranchez/rebranchez la carte.</li>
+            </ol>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">3</span>
+            <h3>Appairage avec l’appli</h3>
+            <ol>
+              <li>Activez le Bluetooth sur votre téléphone.</li>
+              <li>Ouvrez l’appli MeshCore et ajoutez un nouvel appareil.</li>
+              <li>Sélectionnez votre nœud, nommez‑le (ex. « FR75-MonPseudo-Toit‑Est ») et vérifiez qu’il apparaît en ligne.</li>
+            </ol>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">4</span>
+            <h3>Réglages LoRa France</h3>
+            <p>Dans l’appli ou l’interface Web MeshCore, configurez :</p>
+            <ul>
+              <li>Région : <strong>EU/UK (Narrow)</strong></li>
+              <li>Fréquence : <strong>869.618 MHz</strong></li>
+              <li>Bande passante : <strong>62.5 kHz</strong></li>
+              <li>Spreading Factor : <strong>SF 8</strong></li>
+              <li>Coding Rate : <strong>CR 8</strong></li>
+            </ul>
+            <p>Appliquez exactement ces réglages sur tous vos nœuds MeshCore France.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">5</span>
+            <h3>Premier mini‑réseau</h3>
+            <ol>
+              <li>Placez deux nœuds à quelques dizaines de mètres, avec peu d’obstacles.</li>
+              <li>Envoyez un message texte depuis l’appli reliée au premier nœud vers le second.</li>
+              <li>Ajoutez un troisième nœud au milieu (Répéteur et non Compagnon) pour tester le routage multi‑sauts.</li>
+            </ol>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">6</span>
+            <h3>Aller plus loin</h3>
+            <ul>
+              <li>Déployez des répéteurs sur les hauteurs (toits, collines, tours).</li>
+              <li>Alimentez des nœuds sur batterie ou panneau solaire pour une couverture permanente.</li>
+              <li>Rejoignez le Discord France pour affiner vos réglages et partager.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- Section comparaison MeshCore / Meshtastic -->
+    <section class="section compare" id="compare">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>MeshCore vs Meshtastic</h2>
+          <p>Deux approches LoRa mesh complémentaires, avec des priorités différentes.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>MeshCore</th>
+                <th>Meshtastic</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Philosophie</td>
+                <td>Optimisé pour des réseaux planifiés avec répéteurs dédiés, grande stabilité et contrôle du routage.</td>
+                <td>Orienté “plug &amp; play” pour groupes mobiles (rando, ski, vélo, camping).</td>
+              </tr>
+              <tr>
+                <td>Routage</td>
+                <td>Routage par chemins appris et configurables, avec flood utilisé surtout pour la découverte et le secours.</td>
+                <td>Routage par flood géré, où tous les nœuds rebroadcastent par défaut. Les les versions récentes de micro-logiciel permettent un controle plus fin via des roles.</td>
+              </tr>
+              <tr>
+                <td>Nœuds qui relaient</td>
+                <td>Répéteurs dédiés pour porter le trafic exclusivement. Les compagnons (usage utilisateur) ne relaient pas pour réduire le bruit radio.</td>
+                <td>Les clients relaient par défaut, ce qui simplifie les petits réseaux mais augmente le trafic sur les canaux.</td>
+              </tr>
+              <tr>
+                <td>Échelle du réseau</td>
+                <td>Pensé pour des maillages plus grands et structurés, avec réglages fins (hops élevés, chemins définis).</td>
+                <td>Très adapté aux réseaux de taille petite, avec une topologie plus dynamique et spontanée.</td>
+              </tr>
+              <tr>
+                <td>Réglages radio</td>
+                <td>Profils orientés stabilité, airtime maîtrisé et fiabilité du transport de message.</td>
+                <td>Profils variés moins centrés sur l’optimisation fine du trafic.</td>
+              </tr>
+              <tr>
+                <td>Cas d’usage typiques</td>
+                <td>Infra locale semi‑fixe, relais sur toits/cols, réseaux de secours, maillages urbains ou régionaux.</td>
+                <td>Groupes en mouvement, sorties outdoor, petites communautés, expérimentations rapides.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="tech-note">
+          En pratique, beaucoup d’utilisateurs commencent avec Meshtastic pour se faire la main, puis déploient MeshCore
+          lorsqu’ils veulent un réseau plus structuré qui fonctione de manière plus fiable.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section technique (table) -->
+    <section class="section tech">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Profil radio France – Vue rapide</h2>
+          <p>Récapitulatif des paramètres LoRa recommandés pour le maillage MeshCore en France.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Paramètre</th>
+                <th>Valeur France</th>
+                <th>Commentaire</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Région</td>
+                <td>EU/UK (EU868)</td>
+                <td>Bande libre européenne 863–870 MHz, usage LoRa.</td>
+              </tr>
+              <tr>
+                <td>Fréquence</td>
+                <td>869.618 MHz</td>
+                <td>Canal dédié MeshCore France pour une meilleure interopérabilité.</td>
+              </tr>
+              <tr>
+                <td>Bande passante</td>
+                <td>62.5 kHz</td>
+                <td>Narrowband : portée améliorée et robustesse accrue.</td>
+              </tr>
+              <tr>
+                <td>Spreading Factor</td>
+                <td>SF 8</td>
+                <td>Bon compromis portée / débit pour messages texte.</td>
+              </tr>
+              <tr>
+                <td>Coding Rate</td>
+                <td>CR 8</td>
+                <td>Correction d’erreur renforcée pour environnements bruyants.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="tech-note">
+          Pour rester conforme à la réglementation EU868, pensez à respecter la puissance maximale autorisée (500mW de PIRE, soit &lt;27dBm)
+          et les limites de duty‑cycle (10%). Privilégiez le placement d'antenne (en hauteur) à la puissance.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>MeshCore France – Communauté indépendante, basée sur le projet MeshCore open source.</p>
+      <p class="footer-links">
+        <a href="#settings">Réglages LoRa France</a>
+        <span>•</span>
+        <a href="#install">Guide d’installation</a>
+        <span>•</span>
+        <a href="https://discord.com/channels/1343693475589263471/1427697060492087429" target="_blank" rel="noopener">Discord France</a>
+        <span>•</span>
+        <a href="mailto:contact-web@meshcore.fr">Contactez-nous</a>
+      </p>
+    </div>
+  </footer>
+</body>
 </html>
