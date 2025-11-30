@@ -694,3 +694,65 @@ tbody tr:hover {
 .local-mail:hover {
   text-decoration: underline;
 }
+
+.repeater {
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.7), #020617);
+  border-top: 1px solid rgba(15, 23, 42, 1);
+}
+
+.repeater-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.repeater-card {
+  background: rgba(2, 6, 23, 0.96);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(37, 99, 235, 0.75);
+  box-shadow: var(--shadow-soft);
+  padding: 14px 14px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.repeater-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.3), transparent 55%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.repeater-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.repeater-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.repeater-list li {
+  margin-bottom: 4px;
+}
+
+.repeater-code {
+  margin: 6px 0 8px;
+  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.repeater-code code {
+  font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  white-space: pre;
+}
+

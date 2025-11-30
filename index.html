@@ -188,6 +188,51 @@
       </div>
     </section>
 
+    <!-- Section configuration répéteur -->
+    <section class="section repeater" id="repeater">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Configurer un répéteur MeshCore</h2>
+          <p>Un bon réglage de répéteur améliore fortement la portée et la qualité du maillage.</p>
+        </div>
+
+        <div class="repeater-grid">
+          <article class="repeater-card">
+            <h3>Principes importants</h3>
+            <ul class="repeater-list">
+              <li><strong>Ne pas mettre de mot de passe « guest »</strong> : donnez accès public à la télémétrie.</li>
+              <li><strong>Activer la synchronisation d’horloge (clock sync)</strong> pour de meilleurs timings radio et un réseau plus stable.</li>
+              <li>Positionner le répéteur en hauteur (toit, colline, pylône) et le laisser alimenté en continu, avec une alimentation redondante si possible.</li>
+              <li>Installer une antenne performante, accordée à la bonne fréquence avec un filtre à cavité si possible.</li>
+            </ul>
+          </article>
+
+          <article class="repeater-card">
+            <h3>Commandes recommandées</h3>
+            <p>Depuis la console ou l’interface de configuration MeshCore du répéteur, appliquer :</p>
+            <pre class="repeater-code"><code>set advert.interval 0
+set flood.advert.interval 12
+set txdelay 0.5
+set rxdelay 0
+set acg.reset.interval 4
+set multi.acks 1
+set repeat on
+set lon {longitude}
+set lat {latitude}</code></pre>
+            <ul class="repeater-list">
+              <li><code>advert.interval 0</code> : désactive les annonces zero-hop inutiles, réduit le bruit radio.</li>
+              <li><code>flood.advert.interval 12</code> : garde une découverte de réseau régulière sans surcharger le canal.</li>
+              <li><code>txdelay 0.5 / rxdelay 0</code> : optimise le timing émission/réception pour un répéteur fixe.</li>
+              <li><code>acg.reset.interval 4</code> : réinitialise périodiquement le contrôle de gain automatique - très utile en milieu perturbé.</li>
+              <li><code>multi.acks 1</code> : active les accusés de réception multiples pour plus de fiabilité.</li>
+              <li><code>repeat on</code> : indique que ce nœud est bien un répéteur du réseau.</li>
+              <li><code>lon / lat</code> : renseigne la position GPS du répéteur pour les cartes et l’analyse réseau.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
         <!-- Section comparaison MeshCore / Meshtastic -->
     <section class="section compare" id="compare">
       <div class="section-inner">
@@ -372,6 +417,8 @@
         <a href="#settings">Réglages LoRa France</a>
         <span>•</span>
         <a href="#install">Guide d’installation</a>
+        <span>•</span>
+	<a href="#repeater">Configurer un répéteur</a>
         <span>•</span>
         <a href="https://discord.com/channels/1343693475589263471/1427697060492087429" target="_blank" rel="noopener">Discord France</a>
         <span>•</span>
