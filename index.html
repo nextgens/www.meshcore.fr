@@ -251,6 +251,7 @@ set rxdelay 0
 set agc.reset.interval 4
 set multi.acks 1
 set repeat on
+set loop.detect minimal
 set guest.password ''
 set lon {longitude}
 set lat {latitude}</code></pre>
@@ -261,6 +262,7 @@ set lat {latitude}</code></pre>
               <li><code>agc.reset.interval 4</code> : réinitialise périodiquement le contrôle de gain automatique - très utile en milieu perturbé.</li>
               <li><code>multi.acks 1</code> : active les accusés de réception multiples pour plus de fiabilité.</li>
               <li><code>repeat on</code> : indique que ce nœud est bien un répéteur du réseau.</li>
+              <li><code>loop.detect minimal</code> : indique que l'on bloque les trames qui ont 4 fois le même id.</li>
               <li><code>guest.password ''</code> : Permet l'accès sans mot de passe aux statistiques réseau.</li>
               <li><code>lon / lat</code> : renseigne la position GPS du répéteur pour les cartes et l’analyse réseau.</li>
             </ul>
