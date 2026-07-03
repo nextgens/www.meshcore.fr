@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="MeshCore France : réseau LoRa maillé hors‑ligne, réglages 869.618 MHz / 62.5 kHz / SF8 / CR8, documentation d'installation, répéteurs, communautés locales Lyon et Lorient, et lien vers le Discord France."
+    content="MeshCore France : réseau LoRa maillé hors‑ligne, réglages 869.618 MHz / 62.5 kHz / SF8 / CR8, région fr, documentation d'installation, répéteurs, communautés Est et Ouest, et lien vers le Discord France."
   />
   <meta
     name="keywords"
-    content="MeshCore, LoRa, LoRa mesh, réseau maillé, Meshtastic, MeshCore France, 869.618 MHz, EU868, répéteur LoRa, réseau hors ligne, Lyon, Lorient"
+    content="MeshCore, LoRa, LoRa mesh, réseau maillé, Meshtastic, MeshCore France, 869.618 MHz, EU868, répéteur LoRa, réseau hors ligne"
   />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.meshcore.fr/" />
@@ -82,7 +82,7 @@
           <div class="card settings-card" id="settings2">
             <h2>Réglages officiels MeshCore France</h2>
             <p class="settings-main">
-              869.618 MHz • BW = 62.5 kHz • SF = 8 • CR = 8
+              869.618 MHz • BW = 62.5 kHz • SF = 8 • CR = 8 • Région fr
             </p>
             <p class="settings-sub">
               Profil recommandé pour la France : portée élevée, bonne robustesse, compatible EU/UK Narrow.
@@ -91,6 +91,7 @@
               <li>Région : EU/UK (EU868)</li>
               <li>Mode : Narrow • usage texte et data légère</li>
               <li>Puissance : conforme limite EIRP européenne</li>
+              <li>Région : fr</li>
             </ul>
           </div>
 
@@ -195,6 +196,7 @@
               <li>Bande passante : <strong>62.5 kHz</strong></li>
               <li>Spreading Factor : <strong>SF 8</strong></li>
               <li>Coding Rate : <strong>CR 8</strong></li>
+	      <li>Region -&gt; Default region : <strong>fr</strong></li>
             </ul>
             <p>Appliquez exactement ces réglages sur tous vos nœuds MeshCore France.</p>
           </article>
@@ -235,37 +237,52 @@
             <h3>Principes importants</h3>
             <ul class="repeater-list">
               <li><strong>Ne pas mettre de mot de passe « guest »</strong> : donnez accès public à la télémétrie.</li>
+              <li><strong>Le réglage des régions est obligatoire</strong> pour que votre répéteur soit utile au réseau. Sans ce paramétrage il ne répétera pas de trame.</li>
               <li><strong>Activer la synchronisation d’horloge (clock sync)</strong> pour de meilleurs timings radio et un réseau plus stable.</li>
               <li>Positionner le répéteur en hauteur (toit, colline, pylône) et le laisser alimenté en continu, avec une alimentation redondante si possible.</li>
               <li>Installer une antenne performante, accordée à la bonne fréquence avec un filtre à cavité si possible.</li>
+              <li>Si vous installez un relai sur un site exceptionnel de part sa capacité à entendre (sommet d'une montagne, ...) veuillez nous contacter pour obtenir des recommendations personnalisées.</li>
             </ul>
           </article>
 
           <article class="repeater-card">
             <h3>Commandes recommandées</h3>
             <p>Depuis la console ou l’interface de configuration MeshCore du répéteur, appliquer :</p>
-            <pre class="repeater-code"><code>set advert.interval 120
-set flood.advert.interval 12
+            <pre class="repeater-code"><code>set advert.interval 240
+set flood.advert.interval 24
 set agc.reset.interval 4
 set multi.acks 1
 set dutycycle 10
 set path.hash.mode 1
 set loop.detect minimal
+set flood.max.advert 8
+set flood.max.unscoped 8
+region
+region def europe fr
+region default fr
+region save
 set repeat on
 set guest.password ''
 set lon {longitude}
-set lat {latitude}</code></pre>
+set lat {latitude}
+clock sync
+reboot</code></pre>
             <ul class="repeater-list">
-              <li><code>advert.interval 120</code> : annonces zero-hop toutes les deux heures pour que la liste des voisins soit à jour.</li>
-              <li><code>flood.advert.interval 12</code> : garde une découverte de réseau régulière sans surcharger le canal.</li>
+              <li><code>advert.interval 240</code> : annonces zero-hop toutes les quatre heures pour que la liste des voisins soit à jour.</li>
+              <li><code>flood.advert.interval 24</code> : garde une découverte de réseau régulière sans surcharger le canal.</li>
               <li><code>agc.reset.interval 4</code> : réinitialise périodiquement le contrôle de gain automatique - très utile en milieu perturbé.</li>
               <li><code>multi.acks 1</code> : active les accusés de réception multiples pour plus de fiabilité.</li>
               <li><code>dutycycle 10</code> : Respect de la réglementation européene sur le duty-cycle.</li>
               <li><code>path.hash.mode 1</code> : active le mode 2 octets pour les adresses.</li>
               <li><code>loop.detect minimal</code> : indique que l'on bloque les trames qui ont 4 fois le même id.</li>
+              <li><code>set flood.max.advert 8</code> : fixe le TTL des trames d'annonce à 8.</li>
+              <li><code>set flood.unscoped.advert 8</code> : fixe le TTL des trames sans régions à 8.</li>
+              <li><code>region</code> : Définit les régions fr et europe, utilise la région fr par défaut.</li>
               <li><code>repeat on</code> : indique que ce nœud est bien un répéteur du réseau.</li>
               <li><code>guest.password ''</code> : Permet l'accès sans mot de passe aux statistiques réseau.</li>
               <li><code>lon / lat</code> : renseigne la position GPS du répéteur pour les cartes et l’analyse réseau.</li>
+              <li><code>clock sync</code> : synchronise l'horloge du répéteur à partir de celle du compagnon.</li>
+              <li><code>reboot</code> : redémarre pour s'assurer que le réglage des régions est actif.</li>
             </ul>
           </article>
         </div>
@@ -378,6 +395,11 @@ set lat {latitude}</code></pre>
                 <td>Coding Rate</td>
                 <td>CR 8</td>
                 <td>Correction d’erreur renforcée pour environnements bruyants.</td>
+              </tr>
+              <tr>
+                <td>Région</td>
+                <td>fr</td>
+                <td>Marquage des trames avec la région fr pour s'assurer qu'elles soient relayées.</td>
               </tr>
             </tbody>
           </table>
